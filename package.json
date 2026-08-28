@@ -1,5 +1,6 @@
 {
-  "name": "e-commerce",
+  "name": "closet-e-commerce",
+  "description": "Premium fashion commerce workspace with cinematic showcases and streamlined cart operations",
   "version": "0.1.0",
   "private": true,
   "scripts": {
