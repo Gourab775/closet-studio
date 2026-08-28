@@ -126,6 +126,11 @@
   }
   html {
     @apply font-sans;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -140,15 +145,6 @@
 
   .reveal {
     animation: revealUp 1s ease-out both;
-  }
-
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
   }
 
   html {

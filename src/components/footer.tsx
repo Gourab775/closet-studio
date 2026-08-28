@@ -113,7 +113,7 @@ export function Footer() {
 
         <div className="mt-16 pt-6 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4">
           <span className="text-[9px] text-muted-foreground tracking-[0.15em] font-light">
-            &copy; 2024 CLOSET STUDIO. All rights reserved.
+            &copy; 2025 CLOSET STUDIO. All rights reserved.
           </span>
           <div className="flex items-center gap-6">
             <Link
