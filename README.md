@@ -1,90 +1,126 @@
 # CLOSET Studio
 
-A premium e-commerce platform for minimalist fashion, built with Next.js 16, React 19, and Tailwind CSS 4.
+Premium fashion commerce workspace with cinematic product showcases, curated collections, and streamlined cart and checkout operations.
 
-![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
-![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?style=flat-square&logo=tailwindcss)
+**Live Demo:** https://gourab775.github.io/closet-e-commerce
+
+**Category:** E-Commerce / Fashion & Retail
+**Stack:** Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Anime.js · Base UI
+**Language:** TypeScript
 
 ## Overview
 
-CLOSET Studio is a luxury fashion e-commerce experience featuring a cinematic scroll-based homepage, minimalist design system, and full shopping functionality including product browsing, cart management, and checkout flow.
-
-## Tech Stack
-
-- **Framework:** Next.js 16 (App Router)
-- **UI Library:** React 19
-- **Styling:** Tailwind CSS 4
-- **Components:** shadcn/ui (Base Nova style)
-- **Animations:** Anime.js, CSS Keyframes
-- **Icons:** Lucide React
-- **State Management:** React Context (Cart)
-- **Deployment:** Vercel
+CLOSET Studio is a full-stack fashion e-commerce platform built for minimalist luxury retail. It combines scroll-driven product reveals, a grayscale-to-color visual system, and a complete shopping flow from catalog browsing to checkout. With architectural typography and a refined motion language, it delivers a professional, immersive storefront experience across all devices.
 
 ## Features
 
-- **Cinematic Homepage** — Scroll-triggered product reveals with parallax effects and clip-path animations
-- **Product Catalog** — 18 products across 3 curated collections with filtering
-- **Product Detail Pages** — Color/size selection, related products, material and care information
-- **Shopping Cart** — Add/remove items, quantity controls, order summary with dynamic shipping
-- **Checkout Flow** — Multi-step shipping and payment forms
-- **Responsive Design** — Optimized for mobile, tablet, and desktop
-- **Minimalist Aesthetic** — Grayscale-to-color image transitions, architectural typography, clean lines
+- **Cinematic Homepage** — Scroll-triggered reveals with parallax and clip-path animations for editorial product storytelling.
+- **Curated Collections** — 18 products across 3 collections (Studio Collection, Tailored Studio, Essentials) with filtering and collection overview pages.
+- **Product Detail Pages** — Color and size selection, material and care information, and related product recommendations.
+- **Cart & Checkout** — Context-based cart management with quantity controls, order summary with dynamic shipping, and multi-step shipping and payment forms.
+- **Responsive Minimalist Design** — Mobile, tablet, and desktop optimized with a grayscale-to-color image transition system and clean architectural lines.
 
-## Getting Started
+## Tech Stack
 
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view the application.
+| Layer | Technology |
+|-------|------------|
+| Framework | Next.js 16 (App Router) |
+| Frontend | React 19, TypeScript |
+| Styling | Tailwind CSS 4, tw-animate-css, PostCSS |
+| Animation | Anime.js, CSS Keyframes |
+| UI Primitives | Base UI, shadcn/ui (Base Nova), class-variance-authority, clsx, tailwind-merge |
+| Icons | lucide-react |
+| State | React Context (cart-context) |
+| Deployment | Vercel |
 
 ## Project Structure
 
 ```
-src/
-├── app/
-│   ├── about/          # About page
-│   ├── cart/           # Shopping cart
-│   ├── checkout/       # Checkout flow
-│   ├── collections/    # Collections overview
-│   ├── contact/        # Contact page
-│   ├── order-confirmation/  # Order confirmation
-│   ├── products/[handle]/   # Product detail pages
-│   ├── store/          # Product catalog
-│   ├── globals.css     # Global styles & theme
-│   ├── layout.tsx      # Root layout
-│   └── page.tsx        # Homepage
-├── components/
-│   ├── ui/             # Reusable UI components
-│   ├── navbar.tsx      # Navigation
-│   ├── footer.tsx      # Footer
-│   └── scroll-to-top.tsx
-└── lib/
-    ├── cart-context.tsx # Cart state management
-    ├── products.ts      # Product data
-    └── utils.ts         # Utility functions
+closet-e-commerce/
+├── src/
+│   ├── app/
+│   │   ├── page.tsx              # Homepage — cinematic scroll reveals
+│   │   ├── layout.tsx            # Root layout
+│   │   ├── globals.css           # Global styles and theme (minimalist palette)
+│   │   ├── about/                # About page
+│   │   ├── store/                # Product catalog
+│   │   ├── products/[handle]/    # Product detail pages
+│   │   ├── cart/                 # Shopping cart
+│   │   ├── checkout/             # Checkout flow (shipping + payment)
+│   │   ├── collections/          # Collections overview
+│   │   ├── contact/              # Contact page
+│   │   └── order-confirmation/   # Order confirmation
+│   ├── components/
+│   │   ├── navbar.tsx            # Navigation
+│   │   ├── footer.tsx            # Footer
+│   │   ├── scroll-to-top.tsx     # Scroll helper
+│   │   └── ui/                   # Reusable UI primitives
+│   └── lib/
+│       ├── cart-context.tsx      # Cart state management
+│       ├── products.ts           # Product data
+│       └── utils.ts              # Utility helpers (cn, etc.)
+├── public/                       # Static assets
+├── components.json               # shadcn/ui configuration
+├── next.config.ts                # Next.js configuration
+├── tsconfig.json                 # TypeScript configuration
+├── postcss.config.mjs            # PostCSS configuration
+└── package.json
 ```
 
-## Collections
+## Getting Started
 
-| Collection | Description |
-|------------|-------------|
-| **Studio Collection** | Signature line with architectural silhouettes |
-| **Tailored Studio** | Precision tailoring meets fluid fabrics |
-| **Essentials** | Refined basics elevated in material and fit |
+### Prerequisites
+
+- Node.js 18+
+- npm / pnpm / bun
+
+### Installation
+
+```bash
+npm install
+npm run dev
+```
+
+Open http://localhost:3000 to view the storefront.
+
+### Environment Variables
+
+No required environment variables for the base storefront. For deployments that integrate platform services, use:
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `SERVICE_API_KEY` | Optional | Platform service API key when integrating service features. |
+| `SERVICE_BASE_URL` | Optional | Gateway base URL. |
+| `SERVICE_MODEL` | Optional | Model identifier. |
+
+> Alias: `SERVICE_*` is the canonical naming. `SERVICE_API_KEY`, `SERVICE_BASE_URL`, and `SERVICE_MODEL` are aliases for `AI_GATEWAY_API_KEY`, `AI_GATEWAY_BASE_URL`, and `AI_GATEWAY_MODEL` for backward compatibility. Prefer `SERVICE_*` for new deployments.
+
+### Build
+
+```bash
+npm run build
+npm start
+```
+
+## Deployment
+
+**Vercel (recommended for Next.js):**
+- Import the repository, framework preset Next.js, build command `npm run build`, output `.next`.
+
+**Netlify:**
+- Build command `npm run build`, publish directory `.next` (or use Netlify Next.js plugin).
+
+**GitHub Pages (static export):**
+- Set `output: 'export'` in `next.config.ts` for static catalog, run `npm run build`, publish `out/` via GitHub Actions. For cart/checkout with server actions, prefer Vercel/Netlify.
+
+## Customization
+
+- **Branding:** Update `src/app/globals.css` for color tokens, typography, and spacing.
+- **Products:** Edit `src/lib/products.ts` to manage product data, collections, and variants.
+- **Cart Logic:** Customize `src/lib/cart-context.tsx` and cart pages under `src/app/cart/` and `src/app/checkout/`.
+- **Collections:** Modify `src/app/collections/` and `src/app/store/` for new collections or filtering logic.
+- **Navigation:** Update `src/components/navbar.tsx` and `src/components/footer.tsx` for links and site structure.
 
 ## License
 
-This project is proprietary. All rights reserved.
+MIT
