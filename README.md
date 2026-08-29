@@ -2,7 +2,7 @@
 
 Premium fashion commerce workspace with cinematic product showcases, curated collections, and streamlined cart and checkout operations.
 
-**Live Demo:** https://closet-e-commerce-store.vercel.app
+**Live Demo:** https://closet-studio.vercel.app
 
 **Category:** E-Commerce / Fashion & Retail
 **Stack:** Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Anime.js · Base UI
