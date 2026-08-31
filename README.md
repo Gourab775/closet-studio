@@ -1,11 +1,11 @@
-# CLOSET Studio
+﻿# CLOSET Studio
 
 Premium fashion commerce workspace with cinematic product showcases, curated collections, and streamlined cart and checkout operations.
 
 **Live Demo:** https://closet-studio.vercel.app
 
 **Category:** E-Commerce / Fashion & Retail
-**Stack:** Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Anime.js · Base UI
+**Stack:** Next.js 16 Â· React 19 Â· TypeScript Â· Tailwind CSS 4 Â· Anime.js Â· Base UI
 **Language:** TypeScript
 
 ## Overview
@@ -14,11 +14,11 @@ CLOSET Studio is a full-stack fashion e-commerce platform built for minimalist l
 
 ## Features
 
-- **Cinematic Homepage** — Scroll-triggered reveals with parallax and clip-path animations for editorial product storytelling.
-- **Curated Collections** — 18 products across 3 collections (Studio Collection, Tailored Studio, Essentials) with filtering and collection overview pages.
-- **Product Detail Pages** — Color and size selection, material and care information, and related product recommendations.
-- **Cart & Checkout** — Context-based cart management with quantity controls, order summary with dynamic shipping, and multi-step shipping and payment forms.
-- **Responsive Minimalist Design** — Mobile, tablet, and desktop optimized with a grayscale-to-color image transition system and clean architectural lines.
+- **Cinematic Homepage** â€” Scroll-triggered reveals with parallax and clip-path animations for editorial product storytelling.
+- **Curated Collections** â€” 18 products across 3 collections (Studio Collection, Tailored Studio, Essentials) with filtering and collection overview pages.
+- **Product Detail Pages** â€” Color and size selection, material and care information, and related product recommendations.
+- **Cart & Checkout** â€” Context-based cart management with quantity controls, order summary with dynamic shipping, and multi-step shipping and payment forms.
+- **Responsive Minimalist Design** â€” Mobile, tablet, and desktop optimized with a grayscale-to-color image transition system and clean architectural lines.
 
 ## Tech Stack
 
@@ -37,34 +37,34 @@ CLOSET Studio is a full-stack fashion e-commerce platform built for minimalist l
 
 ```
 closet-e-commerce/
-├── src/
-│   ├── app/
-│   │   ├── page.tsx              # Homepage — cinematic scroll reveals
-│   │   ├── layout.tsx            # Root layout
-│   │   ├── globals.css           # Global styles and theme (minimalist palette)
-│   │   ├── about/                # About page
-│   │   ├── store/                # Product catalog
-│   │   ├── products/[handle]/    # Product detail pages
-│   │   ├── cart/                 # Shopping cart
-│   │   ├── checkout/             # Checkout flow (shipping + payment)
-│   │   ├── collections/          # Collections overview
-│   │   ├── contact/              # Contact page
-│   │   └── order-confirmation/   # Order confirmation
-│   ├── components/
-│   │   ├── navbar.tsx            # Navigation
-│   │   ├── footer.tsx            # Footer
-│   │   ├── scroll-to-top.tsx     # Scroll helper
-│   │   └── ui/                   # Reusable UI primitives
-│   └── lib/
-│       ├── cart-context.tsx      # Cart state management
-│       ├── products.ts           # Product data
-│       └── utils.ts              # Utility helpers (cn, etc.)
-├── public/                       # Static assets
-├── components.json               # shadcn/ui configuration
-├── next.config.ts                # Next.js configuration
-├── tsconfig.json                 # TypeScript configuration
-├── postcss.config.mjs            # PostCSS configuration
-└── package.json
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ app/
+â”‚   â”‚   â”œâ”€â”€ page.tsx              # Homepage â€” cinematic scroll reveals
+â”‚   â”‚   â”œâ”€â”€ layout.tsx            # Root layout
+â”‚   â”‚   â”œâ”€â”€ globals.css           # Global styles and theme (minimalist palette)
+â”‚   â”‚   â”œâ”€â”€ about/                # About page
+â”‚   â”‚   â”œâ”€â”€ store/                # Product catalog
+â”‚   â”‚   â”œâ”€â”€ products/[handle]/    # Product detail pages
+â”‚   â”‚   â”œâ”€â”€ cart/                 # Shopping cart
+â”‚   â”‚   â”œâ”€â”€ checkout/             # Checkout flow (shipping + payment)
+â”‚   â”‚   â”œâ”€â”€ collections/          # Collections overview
+â”‚   â”‚   â”œâ”€â”€ contact/              # Contact page
+â”‚   â”‚   â””â”€â”€ order-confirmation/   # Order confirmation
+â”‚   â”œâ”€â”€ components/
+â”‚   â”‚   â”œâ”€â”€ navbar.tsx            # Navigation
+â”‚   â”‚   â”œâ”€â”€ footer.tsx            # Footer
+â”‚   â”‚   â”œâ”€â”€ scroll-to-top.tsx     # Scroll helper
+â”‚   â”‚   â””â”€â”€ ui/                   # Reusable UI primitives
+â”‚   â””â”€â”€ lib/
+â”‚       â”œâ”€â”€ cart-context.tsx      # Cart state management
+â”‚       â”œâ”€â”€ products.ts           # Product data
+â”‚       â””â”€â”€ utils.ts              # Utility helpers (cn, etc.)
+â”œâ”€â”€ public/                       # Static assets
+â”œâ”€â”€ components.json               # shadcn/ui configuration
+â”œâ”€â”€ next.config.ts                # Next.js configuration
+â”œâ”€â”€ tsconfig.json                 # TypeScript configuration
+â”œâ”€â”€ postcss.config.mjs            # PostCSS configuration
+â””â”€â”€ package.json
 ```
 
 ## Getting Started
@@ -124,3 +124,4 @@ npm start
 ## License
 
 MIT
+
