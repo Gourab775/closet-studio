@@ -25,76 +25,78 @@ export function ProductDetailClient({ product }: { product: Product }) {
   }
 
   return (
-    <>
-      <div className="mb-8">
-        <span className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-3">
-          Color — {product.colors[selectedColor].name}
-        </span>
-        <div className="flex gap-3">
-          {product.colors.map((color, i) => (
-            <button
-              key={color.hex}
-              onClick={() => setSelectedColor(i)}
-              className={`w-8 h-8 rounded-full border-2 transition-all duration-300 ${
-                selectedColor === i
-                  ? "border-foreground scale-110"
-                  : "border-border hover:border-foreground/50"
-              }`}
-              style={{ backgroundColor: color.hex }}
-              aria-label={color.name}
-            />
-          ))}
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-6 md:flex-row md:gap-10">
+        <div className="flex flex-col gap-3">
+          <span className="text-[9px] font-bold tracking-[0.35em] text-muted-foreground uppercase block">
+            Color — {product.colors[selectedColor].name}
+          </span>
+          <div className="flex gap-4">
+            {product.colors.map((color, i) => (
+              <button
+                key={color.hex}
+                onClick={() => setSelectedColor(i)}
+                className={`w-9 h-9 rounded-full border-2 transition-all duration-300 ${
+                  selectedColor === i
+                    ? "border-foreground scale-110 ring-1 ring-offset-1 ring-offset-background"
+                    : "border-border hover:border-foreground/40"
+                }`}
+                style={{ backgroundColor: color.hex }}
+                aria-label={color.name}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <span className="text-[9px] font-bold tracking-[0.35em] text-muted-foreground uppercase block">
+            Size
+          </span>
+          <div className="flex gap-3">
+            {product.sizes.map((size) => (
+              <button
+                key={size}
+                onClick={() => {
+                  setSelectedSize(size)
+                  setError(false)
+                }}
+                className={`min-w-[48px] h-12 px-5 text-[11px] font-bold tracking-[0.2em] uppercase border transition-all duration-300 ${
+                  selectedSize === size
+                    ? "bg-foreground text-background border-foreground"
+                    : error && !selectedSize
+                    ? "border-destructive text-destructive"
+                    : "bg-transparent text-foreground border-border hover:border-foreground"
+                }`}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
+          {error && (
+            <p className="text-[10px] text-destructive font-light">
+              Please select a size before adding to bag
+            </p>
+          )}
         </div>
       </div>
 
-      <div className="mb-8">
-        <span className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-3">
-          Size
-        </span>
-        <div className="flex gap-3">
-          {product.sizes.map((size) => (
-            <button
-              key={size}
-              onClick={() => {
-                setSelectedSize(size)
-                setError(false)
-              }}
-              className={`min-w-[44px] h-11 px-4 text-[11px] font-bold tracking-[0.15em] uppercase border transition-all duration-300 ${
-                selectedSize === size
-                  ? "bg-foreground text-background border-foreground"
-                  : error && !selectedSize
-                  ? "border-destructive text-destructive"
-                  : "bg-transparent text-foreground border-border hover:border-foreground"
-              }`}
-            >
-              {size}
-            </button>
-          ))}
-        </div>
-        {error && (
-          <p className="text-[10px] text-destructive mt-2 font-light">
-            Please select a size
-          </p>
-        )}
-      </div>
-
-      <div className="flex gap-3">
+      <div className="flex gap-4 pt-2">
         <button
           onClick={handleAddToBag}
-          className={`flex-1 h-14 text-[10px] font-bold uppercase tracking-[0.25em] flex items-center justify-center gap-3 rounded-full transition-all duration-300 ${
+          className={`flex-1 h-14 text-[10px] font-bold uppercase tracking-[0.3em] flex items-center justify-center gap-2.5 rounded-full transition-all duration-300 ${
             added
-              ? "bg-green-600 text-white"
+              ? "bg-success text-success-foreground"
               : "bg-primary text-primary-foreground hover:bg-primary/90"
           }`}
         >
           {added ? (
             <>
-              <Check size={16} />
-              <span>Added</span>
+              <Check size={15} strokeWidth={2} />
+              <span>Added to Bag</span>
             </>
           ) : (
             <>
-              <ShoppingBag size={16} />
+              <ShoppingBag size={15} strokeWidth={2} />
               <span>Add to Bag</span>
             </>
           )}
@@ -108,9 +110,9 @@ export function ProductDetailClient({ product }: { product: Product }) {
           }`}
           aria-label="Add to wishlist"
         >
-          <Heart size={16} fill={liked ? "currentColor" : "none"} />
+          <Heart size={15} fill={liked ? "currentColor" : "none"} strokeWidth={2} />
         </button>
       </div>
-    </>
+    </div>
   )
 }

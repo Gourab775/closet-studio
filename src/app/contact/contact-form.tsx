@@ -16,10 +16,10 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md flex flex-col gap-6">
+    <form onSubmit={handleSubmit} className="w-full max-w-md flex flex-col gap-8">
       {submitted ? (
-        <div className="text-center py-6">
-          <span className="text-[9px] font-bold tracking-[0.3em] text-foreground uppercase block mb-2">
+        <div className="text-center py-8">
+          <span className="text-[9px] font-bold tracking-[0.35em] text-foreground uppercase block mb-3">
             Message Sent
           </span>
           <p className="text-sm text-muted-foreground font-light">
@@ -31,7 +31,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="name"
-              className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-2"
+              className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-3"
             >
               Name
             </label>
@@ -40,7 +40,7 @@ export function ContactForm() {
               type="text"
               required
               aria-required="true"
-              className="w-full bg-transparent border-b border-border/60 py-3 text-sm text-foreground font-light focus:outline-none focus:border-foreground transition-colors duration-300 placeholder:text-muted-foreground/40"
+              className="w-full bg-transparent border-b border-border/60 py-4 text-sm text-foreground font-light focus:outline-none focus:border-foreground transition-colors duration-300 placeholder:text-muted-foreground/40"
               placeholder="Your name"
             />
           </div>
@@ -48,7 +48,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="email"
-              className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-2"
+              className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-3"
             >
               Email
             </label>
@@ -57,7 +57,7 @@ export function ContactForm() {
               type="email"
               required
               aria-required="true"
-              className="w-full bg-transparent border-b border-border/60 py-3 text-sm text-foreground font-light focus:outline-none focus:border-foreground transition-colors duration-300 placeholder:text-muted-foreground/40"
+              className="w-full bg-transparent border-b border-border/60 py-4 text-sm text-foreground font-light focus:outline-none focus:border-foreground transition-colors duration-300 placeholder:text-muted-foreground/40"
               placeholder="your@email.com"
             />
           </div>
@@ -65,7 +65,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="subject"
-              className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-2"
+              className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-3"
             >
               Subject
             </label>
@@ -74,7 +74,7 @@ export function ContactForm() {
               type="text"
               required
               aria-required="true"
-              className="w-full bg-transparent border-b border-border/60 py-3 text-sm text-foreground font-light focus:outline-none focus:border-foreground transition-colors duration-300 placeholder:text-muted-foreground/40"
+              className="w-full bg-transparent border-b border-border/60 py-4 text-sm text-foreground font-light focus:outline-none focus:border-foreground transition-colors duration-300 placeholder:text-muted-foreground/40"
               placeholder="How can we help?"
             />
           </div>
@@ -82,7 +82,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="message"
-              className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-2"
+              className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-3"
             >
               Message
             </label>
@@ -91,7 +91,7 @@ export function ContactForm() {
               rows={5}
               required
               aria-required="true"
-              className="w-full bg-transparent border-b border-border/60 py-3 text-sm text-foreground font-light focus:outline-none focus:border-foreground transition-colors duration-300 resize-none placeholder:text-muted-foreground/40"
+              className="w-full bg-transparent border-b border-border/60 py-4 text-sm text-foreground font-light focus:outline-none focus:border-foreground transition-colors duration-300 resize-none placeholder:text-muted-foreground/40"
               placeholder="Tell us more..."
             />
           </div>
@@ -99,7 +99,7 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={submitting}
-            className="mt-4 w-full h-14 bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed text-[10px] font-bold uppercase tracking-[0.25em] rounded-full transition-colors duration-300"
+            className="mt-4 w-full h-16 bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed text-[11px] font-bold uppercase tracking-[0.3em] rounded-full transition-all duration-300 leading-[64px]"
           >
             {submitting ? "Sending..." : "Send Message"}
           </button>

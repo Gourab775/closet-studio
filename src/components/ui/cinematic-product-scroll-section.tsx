@@ -6,27 +6,12 @@ import { ArrowDown, Eye } from "lucide-react"
 import Link from "next/link"
 import { PRODUCTS } from "@/lib/products"
 
-const MOCK_PRODUCTS = PRODUCTS.slice(0, 3).map((p) => ({
-  ...p,
-  collection: { title: p.collection },
-}))
+const MOCK_PRODUCTS = PRODUCTS.slice(0, 3)
 
-function MinimalProductCard({ product }: { product: typeof MOCK_PRODUCTS[0] }) {
+function MinimalProductCard({ product }: { product: (typeof PRODUCTS)[number] }) {
   const fullImageUrl = product.thumbnail ?? ""
   const cardRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(false)
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    const card = cardRef.current
-    if (!card) return
-    const touch = e.touches[0]
-    const rect = card.getBoundingClientRect()
-    const x = ((touch.clientX - rect.left) / rect.width) * 100
-    const y = ((touch.clientY - rect.top) / rect.height) * 100
-    card.style.setProperty("--reveal-x", `${String(x)}%`)
-    card.style.setProperty("--reveal-y", `${String(y)}%`)
-    setActive(true)
-  }
 
   const handleMouseEnter = (e: React.MouseEvent) => {
     const card = cardRef.current
@@ -34,8 +19,8 @@ function MinimalProductCard({ product }: { product: typeof MOCK_PRODUCTS[0] }) {
     const rect = card.getBoundingClientRect()
     const x = ((e.clientX - rect.left) / rect.width) * 100
     const y = ((e.clientY - rect.top) / rect.height) * 100
-    card.style.setProperty("--reveal-x", `${String(x)}%`)
-    card.style.setProperty("--reveal-y", `${String(y)}%`)
+    card.style.setProperty("--reveal-x", `${x}%`)
+    card.style.setProperty("--reveal-y", `${y}%`)
     setActive(true)
   }
 
@@ -43,9 +28,8 @@ function MinimalProductCard({ product }: { product: typeof MOCK_PRODUCTS[0] }) {
     <div
       ref={cardRef}
       onMouseEnter={handleMouseEnter}
-      onTouchStart={handleTouchStart}
       onMouseLeave={() => setActive(false)}
-      className="group relative block w-full h-full bg-transparent overflow-hidden border border-border/30 hover:border-primary/50 transition-colors duration-700"
+      className="group relative block w-full h-full overflow-hidden border border-border/40 hover:border-primary/40 transition-colors duration-700"
     >
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-muted">
         {fullImageUrl && (
@@ -84,7 +68,7 @@ function MinimalProductCard({ product }: { product: typeof MOCK_PRODUCTS[0] }) {
         >
           <Link
             href={`/products/${product.handle}`}
-            className="block bg-background/80 backdrop-blur-md text-foreground text-[8px] sm:text-[10px] uppercase tracking-normal font-medium py-1.5 px-3 sm:py-3 sm:px-8 rounded-full border border-border whitespace-nowrap shadow-xl hover:bg-primary hover:text-primary-foreground transition-colors duration-300 cursor-pointer"
+            className="block bg-background/85 backdrop-blur-md text-foreground text-[8px] sm:text-[10px] uppercase tracking-normal font-medium py-1.5 px-3 sm:py-3 sm:px-8 rounded-full border border-border whitespace-nowrap shadow-xl hover:bg-primary hover:text-primary-foreground transition-colors duration-300 cursor-pointer"
           >
             View Details
           </Link>
@@ -93,7 +77,7 @@ function MinimalProductCard({ product }: { product: typeof MOCK_PRODUCTS[0] }) {
 
       <div className="flex flex-col items-center justify-center text-center p-3 sm:p-6 md:p-8 bg-transparent relative z-20">
         <span className="text-[8px] sm:text-[9px] text-muted-foreground uppercase tracking-[0.4em] mb-1 sm:mb-3 font-light">
-          {product.collection?.title ?? "CLOSET STUDIO"}
+          {product.collection}
         </span>
         <h4 className="text-xs sm:text-sm md:text-base uppercase font-normal text-foreground mb-2 sm:mb-4 w-full line-clamp-2 transition-colors duration-500 tracking-widest">
           {product.title}
@@ -113,9 +97,8 @@ function MinimalProductCard({ product }: { product: typeof MOCK_PRODUCTS[0] }) {
   )
 }
 
-function ProductHero({ product, reversed = false }: { product: typeof MOCK_PRODUCTS[0]; reversed?: boolean }) {
+function ProductHero({ product, reversed = false }: { product: (typeof PRODUCTS)[number]; reversed?: boolean }) {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const fullImageUrl = product.thumbnail ?? ""
 
   useEffect(() => {
     const section = sectionRef.current
@@ -177,19 +160,19 @@ function ProductHero({ product, reversed = false }: { product: typeof MOCK_PRODU
   }, [])
 
   return (
-    <div ref={sectionRef} className="scroll-section relative h-auto md:h-[250vh] w-full group">
-      <div className="relative md:sticky md:top-0 md:left-0 w-full h-auto md:h-screen overflow-hidden bg-transparent">
+    <div ref={sectionRef} className="scroll-section relative h-auto md:h-[220vh] w-full group">
+      <div className="relative md:sticky md:top-0 w-full h-auto md:h-screen overflow-hidden bg-transparent">
         <div className="w-full h-auto md:h-full grid grid-cols-1 md:grid-cols-2">
           <div className={`relative w-full flex items-center justify-center p-3 sm:p-8 md:p-0 max-w-[400px] sm:max-w-[480px] md:max-w-none mx-auto ${reversed ? "md:order-2" : ""}`}>
             <div className="relative w-full aspect-[4/5] md:aspect-auto md:h-full overflow-hidden rounded-2xl md:rounded-none">
               <div className="absolute inset-0 w-full h-full flex justify-center bg-transparent">
-                {fullImageUrl && (
-                  <Image src={fullImageUrl} alt={product.title} fill className="object-contain grayscale brightness-110" priority />
+                {product.thumbnail && (
+                  <Image src={product.thumbnail} alt={product.title} fill className="object-contain grayscale brightness-110" priority />
                 )}
               </div>
               <div className="color-mask absolute inset-0 w-full h-full flex justify-center will-change-[clip-path]" style={{ clipPath: "inset(0 0 100% 0)" }}>
-                {fullImageUrl && (
-                  <Image src={fullImageUrl} alt={product.title} fill className="object-contain" priority />
+                {product.thumbnail && (
+                  <Image src={product.thumbnail} alt={product.title} fill className="object-contain" priority />
                 )}
               </div>
             </div>
@@ -212,7 +195,7 @@ function ProductHero({ product, reversed = false }: { product: typeof MOCK_PRODU
                 <Link href={`/products/${product.handle}`} className="w-full block">
                   <button className="w-full h-14 bg-primary text-primary-foreground hover:bg-primary/90 text-xs font-medium uppercase flex items-center justify-center gap-3 rounded-full transition-colors duration-300">
                     <span className="tracking-widest">QUICK VIEW</span>
-                    <Eye width={16} />
+                    <Eye width={16} strokeWidth={2} />
                   </button>
                 </Link>
               </div>
@@ -241,12 +224,11 @@ export function Component() {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !animeTriggered.current) {
-          if (!finalCollectionRef.current) return
           animeTriggered.current = true
 
           import("animejs").then(({ animate, stagger }) => {
             animate(finalCollectionRef.current!.querySelectorAll(".anime-card"), {
-              translateY: [-200, 0],
+              translateY: [-100, 0],
               opacity: [0, 1],
               delay: stagger(150),
               duration: 1000,
@@ -325,12 +307,12 @@ export function Component() {
 
         <div className="relative z-10 text-center px-6 -mt-16 md:-mt-32 w-full flex flex-col items-center justify-center">
           <div className="overflow-hidden mb-4 md:mb-6 w-full flex justify-center">
-            <span className="block text-[9px] md:text-[10px] font-black text-muted-foreground uppercase reveal text-center tracking-[0.3em] md:tracking-[0.8em] ps-[0.3em] md:ps-[0.8em]" style={{ animationDelay: "0.2s" }}>
+            <span className="block text-[9px] md:text-[10px] font-black text-muted-foreground uppercase reveal text-center tracking-[0.3em] md:tracking-[0.8em]" style={{ animationDelay: "0.2s" }}>
               {finalSubtitle}
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-[6rem] lg:text-[7rem] font-black leading-[0.85] text-foreground w-full flex flex-col items-center justify-center text-center tracking-tighter">
+          <h1 className="text-4xl sm:text-6xl md:text-[5.5rem] lg:text-[6.5rem] font-black leading-[0.8] text-foreground w-full flex flex-col items-center justify-center text-center tracking-tighter">
             <div className="overflow-hidden w-full flex justify-center">
               <span className="block reveal text-center" style={{ animationDelay: "0.4s" }}>
                 {mainTitleFirst}
@@ -368,7 +350,7 @@ export function Component() {
             <span className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase block">OVERVIEW</span>
             <Link href="/store" className="group inline-flex items-center gap-1.5 text-xs font-bold uppercase text-foreground hover:text-muted-foreground transition-colors">
               <span className="tracking-[0.2em]">View Collection</span>
-              <ArrowDown className="w-3.5 h-3.5 transition-transform -rotate-90 group-hover:translate-x-0.5" />
+              <ArrowDown className="w-3.5 h-3.5 transition-transform -rotate-90 group-hover:translate-x-0.5" strokeWidth={2} />
             </Link>
           </div>
 
