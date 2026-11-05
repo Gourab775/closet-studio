@@ -252,6 +252,8 @@ export function Component() {
               duration: 1000,
               easing: "easeOutElastic(1, .6)",
             })
+          }).catch((err) => {
+            console.warn("animejs import failed:", err)
           })
         }
       },
@@ -328,7 +330,7 @@ export function Component() {
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-[8rem] lg:text-[10rem] font-black leading-[0.85] text-foreground w-full flex flex-col items-center justify-center text-center tracking-tighter">
+          <h1 className="text-4xl sm:text-6xl md:text-[6rem] lg:text-[7rem] font-black leading-[0.85] text-foreground w-full flex flex-col items-center justify-center text-center tracking-tighter">
             <div className="overflow-hidden w-full flex justify-center">
               <span className="block reveal text-center" style={{ animationDelay: "0.4s" }}>
                 {mainTitleFirst}

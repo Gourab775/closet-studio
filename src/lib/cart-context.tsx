@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useCallback } from "react"
 import type { Product } from "@/lib/products"
 
 export interface CartItem {
+  id: string
   product: Product
   selectedColor: number
   selectedSize: string
@@ -13,8 +14,8 @@ export interface CartItem {
 interface CartContextType {
   items: CartItem[]
   addItem: (product: Product, color: number, size: string) => void
-  removeItem: (index: number) => void
-  updateQuantity: (index: number, quantity: number) => void
+  removeItem: (itemId: string) => void
+  updateQuantity: (itemId: string, quantity: number) => void
   clearCart: () => void
   totalItems: number
   totalPrice: number
@@ -38,21 +39,23 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         updated[existing] = { ...updated[existing], quantity: updated[existing].quantity + 1 }
         return updated
       }
-      return [...prev, { product, selectedColor: color, selectedSize: size, quantity: 1 }]
+      return [...prev, { id: crypto.randomUUID(), product, selectedColor: color, selectedSize: size, quantity: 1 }]
     })
   }, [])
 
-  const removeItem = useCallback((index: number) => {
-    setItems((prev) => prev.filter((_, i) => i !== index))
+  const removeItem = useCallback((itemId: string) => {
+    setItems((prev) => prev.filter((item) => item.id !== itemId))
   }, [])
 
-  const updateQuantity = useCallback((index: number, quantity: number) => {
+  const updateQuantity = useCallback((itemId: string, quantity: number) => {
     if (quantity <= 0) {
-      setItems((prev) => prev.filter((_, i) => i !== index))
+      setItems((prev) => prev.filter((item) => item.id !== itemId))
       return
     }
     setItems((prev) => {
       const updated = [...prev]
+      const index = updated.findIndex((item) => item.id === itemId)
+      if (index === -1) return updated
       updated[index] = { ...updated[index], quantity }
       return updated
     })

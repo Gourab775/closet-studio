@@ -76,10 +76,11 @@ export function Navbar() {
           <Link
             href="/cart"
             className="relative text-foreground p-1 hover:opacity-70 transition-opacity"
+            aria-label={`${totalItems} items in cart`}
           >
             <ShoppingBag size={20} />
             {totalItems > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-foreground text-background text-[8px] font-bold rounded-full flex items-center justify-center">
+              <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-foreground text-background text-[8px] font-bold rounded-full flex items-center justify-center" aria-hidden="true">
                 {totalItems}
               </span>
             )}
@@ -89,6 +90,7 @@ export function Navbar() {
             onClick={() => setOpen(!open)}
             className="md:hidden text-foreground p-1"
             aria-label="Toggle menu"
+            aria-expanded={open}
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>

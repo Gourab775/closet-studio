@@ -47,9 +47,9 @@ export default function CartPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16">
           <div className="lg:col-span-2 flex flex-col gap-8">
-            {items.map((item, index) => (
+            {items.map((item) => (
               <div
-                key={`${item.product.id}-${item.selectedColor}-${item.selectedSize}`}
+                key={item.id}
                 className="flex gap-6 pb-8 border-b border-border/40"
               >
                 <Link
@@ -89,9 +89,10 @@ export default function CartPage() {
                     <div className="flex items-center border border-border/60">
                       <button
                         onClick={() =>
-                          updateQuantity(index, item.quantity - 1)
+                          updateQuantity(item.id, item.quantity - 1)
                         }
-                        className="w-9 h-9 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                        disabled={item.quantity === 1}
+                        className="w-9 h-9 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         <Minus size={12} />
                       </button>
@@ -100,7 +101,7 @@ export default function CartPage() {
                       </span>
                       <button
                         onClick={() =>
-                          updateQuantity(index, item.quantity + 1)
+                          updateQuantity(item.id, item.quantity + 1)
                         }
                         className="w-9 h-9 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
                       >
@@ -113,7 +114,7 @@ export default function CartPage() {
                         ${item.product.priceNumber * item.quantity}.00
                       </span>
                       <button
-                        onClick={() => removeItem(index)}
+                        onClick={() => removeItem(item.id)}
                         className="text-muted-foreground hover:text-foreground transition-colors"
                       >
                         <Trash2 size={14} />

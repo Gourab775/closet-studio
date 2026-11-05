@@ -1,10 +1,5 @@
 import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Contact — CLOSET Studio",
-  description:
-    "Get in touch with CLOSET Studio. We're here to help with orders, inquiries, and collaborations.",
-}
+import { ContactForm } from "@/app/contact/contact-form"
 
 const INFO = [
   {
@@ -24,6 +19,12 @@ const INFO = [
     value: "Mon – Fri: 10AM – 6PM EST",
   },
 ]
+
+export const metadata: Metadata = {
+  title: "Contact — CLOSET Studio",
+  description:
+    "Get in touch with CLOSET Studio. We're here to help with orders, inquiries, and collaborations.",
+}
 
 export default function ContactPage() {
   return (
@@ -57,78 +58,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex items-start">
-            <form className="w-full max-w-md flex flex-col gap-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-2"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  className="w-full bg-transparent border-b border-border/60 py-3 text-sm text-foreground font-light focus:outline-none focus:border-foreground transition-colors duration-300 placeholder:text-muted-foreground/40"
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  className="w-full bg-transparent border-b border-border/60 py-3 text-sm text-foreground font-light focus:outline-none focus:border-foreground transition-colors duration-300 placeholder:text-muted-foreground/40"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-2"
-                >
-                  Subject
-                </label>
-                <input
-                  id="subject"
-                  type="text"
-                  required
-                  className="w-full bg-transparent border-b border-border/60 py-3 text-sm text-foreground font-light focus:outline-none focus:border-foreground transition-colors duration-300 placeholder:text-muted-foreground/40"
-                  placeholder="How can we help?"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="text-[9px] font-bold tracking-[0.3em] text-muted-foreground uppercase block mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  required
-                  className="w-full bg-transparent border-b border-border/60 py-3 text-sm text-foreground font-light focus:outline-none focus:border-foreground transition-colors duration-300 resize-none placeholder:text-muted-foreground/40"
-                  placeholder="Tell us more..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="mt-4 w-full h-14 bg-primary text-primary-foreground hover:bg-primary/90 text-[10px] font-bold uppercase tracking-[0.25em] rounded-full transition-colors duration-300"
-              >
-                Send Message
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </section>

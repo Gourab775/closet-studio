@@ -248,7 +248,7 @@ export default function CheckoutPage() {
               <div className="flex flex-col gap-4 mb-6">
                 {items.map((item) => (
                   <div
-                    key={`${item.product.id}-${item.selectedColor}-${item.selectedSize}`}
+                    key={item.id}
                     className="flex gap-4"
                   >
                     <div className="relative w-16 h-20 bg-muted flex-shrink-0 overflow-hidden">

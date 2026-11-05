@@ -1,13 +1,12 @@
 "use client"
 
-import React from "react"
+import { useState } from "react"
 import Link from "next/link"
 
 const FOOTER_LINKS = {
   shop: [
     { href: "/store", label: "All Products" },
     { href: "/collections", label: "Collections" },
-    { href: "/store", label: "New Arrivals" },
   ],
   company: [
     { href: "/about", label: "Our Story" },
@@ -22,6 +21,18 @@ const FOOTER_LINKS = {
 }
 
 export function Footer() {
+  const [subscribed, setSubscribed] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitting(true)
+    setTimeout(() => {
+      setSubmitting(false)
+      setSubscribed(true)
+    }, 600)
+  }
+
   return (
     <footer className="bg-background border-t border-border/40">
       <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16 pb-8">
@@ -39,21 +50,26 @@ export function Footer() {
               A timeless lifestyle beyond clothing. Where minimalism meets
               luxury. Designed for those who appreciate quiet elegance.
             </p>
-            <div className="flex flex-col gap-3">
-              <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-foreground block">
-                Stay Updated
-              </span>
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="flex-1 bg-transparent border-b border-border/60 py-2 text-[11px] text-foreground font-light focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/40 min-w-0"
-                />
-                <button className="text-[9px] font-bold tracking-[0.15em] uppercase text-foreground hover:text-muted-foreground transition-colors ml-3 whitespace-nowrap">
-                  Subscribe
-                </button>
+              <div className="flex flex-col gap-3">
+                <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-foreground block">
+                  Stay Updated
+                </span>
+                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    required
+                    className="flex-1 bg-transparent border-b border-border/60 py-2 text-[11px] text-foreground font-light focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/40 min-w-0 sm:min-w-[200px]"
+                  />
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="text-[9px] font-bold tracking-[0.15em] uppercase text-foreground hover:text-muted-foreground transition-colors ml-0 sm:ml-3 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {subscribed ? "Subscribed" : submitting ? "Subscribing..." : "Subscribe"}
+                  </button>
+                </form>
               </div>
-            </div>
           </div>
 
           <div>
