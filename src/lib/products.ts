@@ -6,6 +6,7 @@ export interface Product {
   longDescription: string
   thumbnail: string
   images: string[]
+  colorImages: Record<string, string>
   collection: string
   collectionHandle: string
   price: string
@@ -30,6 +31,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#E1D8CE": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200&auto=format&fit=crop",
+      "#1E1E1E": "https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=1200&auto=format&fit=crop",
+      "#3A4F41": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Studio Collection",
     collectionHandle: "studio-collection",
     price: "$299.00",
@@ -56,6 +62,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1518622358385-8ea7d7e2f324?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#E1D8CE": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1200&auto=format&fit=crop",
+      "#1E1E1E": "https://images.unsplash.com/photo-1518622358385-8ea7d7e2f324?q=80&w=1200&auto=format&fit=crop",
+      "#C2B280": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Tailored Studio",
     collectionHandle: "tailored-studio",
     price: "$279.00",
@@ -82,6 +93,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1434389677669-e08b4cda3ea3?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#D7C4B7": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop",
+      "#1E1E1E": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1200&auto=format&fit=crop",
+      "#E6E6E6": "https://images.unsplash.com/photo-1434389677669-e08b4cda3ea3?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Essentials",
     collectionHandle: "essentials",
     price: "$199.00",
@@ -108,6 +124,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1593030103066-0093718e7177?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#36454F": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop",
+      "#1E1E1E": "https://images.unsplash.com/photo-1593030103066-0093718e7177?q=80&w=1200&auto=format&fit=crop",
+      "#C19A6B": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Studio Collection",
     collectionHandle: "studio-collection",
     price: "$349.00",
@@ -134,6 +155,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#E8DCC8": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop",
+      "#708090": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1200&auto=format&fit=crop",
+      "#1E1E1E": "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Essentials",
     collectionHandle: "essentials",
     price: "$179.00",
@@ -160,6 +186,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#1E1E1E": "https://images.unsplash.com/photo-1434389677669-e08b4cda3ea3?q=80&w=1200&auto=format&fit=crop",
+      "#9E9E9E": "https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop",
+      "#FFFDD0": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Tailored Studio",
     collectionHandle: "tailored-studio",
     price: "$219.00",
@@ -186,6 +217,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1588359348347-9bc6cbbb689e?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#FFFFFF": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1200&auto=format&fit=crop",
+      "#87CEEB": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=1200&auto=format&fit=crop",
+      "#DE5D83": "https://images.unsplash.com/photo-1588359348347-9bc6cbbb689e?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Essentials",
     collectionHandle: "essentials",
     price: "$129.00",
@@ -212,6 +248,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#1E1E1E": "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?q=80&w=1200&auto=format&fit=crop",
+      "#C19A6B": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop",
+      "#F0EAD6": "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Studio Collection",
     collectionHandle: "studio-collection",
     price: "$189.00",
@@ -238,6 +279,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#C19A6B": "https://images.unsplash.com/photo-1548624313-0396c75e4b1a?q=80&w=1200&auto=format&fit=crop",
+      "#1E1E1E": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200&auto=format&fit=crop",
+      "#FFFFF0": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Tailored Studio",
     collectionHandle: "tailored-studio",
     price: "$399.00",
@@ -264,6 +310,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1593030103066-0093718e7177?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#C2B280": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop",
+      "#F5F5F5": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop",
+      "#708090": "https://images.unsplash.com/photo-1593030103066-0093718e7177?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Studio Collection",
     collectionHandle: "studio-collection",
     price: "$289.00",
@@ -290,6 +341,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#1E1E1E": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop",
+      "#F5F5F5": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1200&auto=format&fit=crop",
+      "#C19A6B": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Essentials",
     collectionHandle: "essentials",
     price: "$79.00",
@@ -316,6 +372,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#36454F": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop",
+      "#C19A6B": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1200&auto=format&fit=crop",
+      "#1E1E1E": "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Tailored Studio",
     collectionHandle: "tailored-studio",
     price: "$249.00",
@@ -342,6 +403,10 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#36454F": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200&auto=format&fit=crop",
+      "#C19A6B": "https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Studio Collection",
     collectionHandle: "studio-collection",
     price: "$459.00",
@@ -367,6 +432,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1434389677669-e08b4cda3ea3?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#1B2A4A": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1200&auto=format&fit=crop",
+      "#D7C4B7": "https://images.unsplash.com/photo-1434389677669-e08b4cda3ea3?q=80&w=1200&auto=format&fit=crop",
+      "#1E1E1E": "https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Essentials",
     collectionHandle: "essentials",
     price: "$229.00",
@@ -393,6 +463,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#C3B091": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop",
+      "#1B2A4A": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1200&auto=format&fit=crop",
+      "#F5F5F5": "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Essentials",
     collectionHandle: "essentials",
     price: "$119.00",
@@ -419,6 +494,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#9E9E9E": "https://images.unsplash.com/photo-1434389677669-e08b4cda3ea3?q=80&w=1200&auto=format&fit=crop",
+      "#1B2A4A": "https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop",
+      "#1E1E1E": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Tailored Studio",
     collectionHandle: "tailored-studio",
     price: "$199.00",
@@ -443,6 +523,11 @@ export const PRODUCTS: Product[] = [
     images: [
       "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#FFFFF0": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=1200&auto=format&fit=crop",
+      "#1B2A4A": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=1200&auto=format&fit=crop",
+      "#800020": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Essentials",
     collectionHandle: "essentials",
     price: "$49.00",
@@ -468,6 +553,11 @@ export const PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=1200&auto=format&fit=crop",
     ],
+    colorImages: {
+      "#F5F5F5": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1200&auto=format&fit=crop",
+      "#87CEEB": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=1200&auto=format&fit=crop",
+      "#9DC183": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=1200&auto=format&fit=crop",
+    },
     collection: "Studio Collection",
     collectionHandle: "studio-collection",
     price: "$149.00",

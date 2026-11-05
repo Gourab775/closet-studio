@@ -49,18 +49,6 @@ export default async function ProductPage({ params }: Props) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
-          <div className="relative w-full aspect-[3/4] bg-muted overflow-hidden rounded-3xl group/img">
-            <Image
-              src={product.thumbnail}
-              alt={product.title}
-              fill
-              className="object-cover transition-transform duration-1000 group-hover/img:scale-105"
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-700" />
-          </div>
-
           <div className="flex flex-col justify-start py-4">
             <span className="text-[9px] font-bold tracking-[0.5em] text-muted-foreground uppercase block mb-6">
               {product.collection}
