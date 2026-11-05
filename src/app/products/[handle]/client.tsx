@@ -5,6 +5,7 @@ import Image from "next/image"
 import { ShoppingBag, Heart, Check } from "lucide-react"
 import type { Product } from "@/lib/products"
 import { useCart } from "@/lib/cart-context"
+import { ImageCarousel } from "@/components/ui/image-carousel"
 
 export function ProductDetailClient({ product }: { product: Product }) {
   const { addItem } = useCart()
@@ -42,125 +43,107 @@ export function ProductDetailClient({ product }: { product: Product }) {
   }
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex flex-col gap-6 md:flex-row md:gap-10">
-        {/* Main Product Image */}
-        <div className="flex-1 flex flex-col gap-4">
-          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl bg-muted group/img">
-            <Image
-              src={colorImage}
-              alt={`${product.title} — ${product.colors[selectedColor].name}`}
-              fill
-              className="object-cover transition-opacity duration-500 ease-in-out"
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-700" />
-            {!inStock && (
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center rounded-3xl">
-                <span className="text-foreground font-bold text-sm tracking-wider uppercase">
-                  Out of Stock
-                </span>
-              </div>
-            )}
-            <div className="absolute top-0 left-0 w-10 h-[1px] bg-white/30" />
-            <div className="absolute top-0 left-0 w-[1px] h-10 bg-white/30" />
-            <div className="absolute bottom-0 right-0 w-10 h-[1px] bg-white/30" />
-            <div className="absolute bottom-0 right-0 w-[1px] h-10 bg-white/30" />
-          </div>
+    <div className="flex flex-col gap-8 md:flex-row md:gap-12">
+      {/* Left: Image Carousel */}
+      <div className="flex-1 flex flex-col gap-4">
+        <ImageCarousel
+          images={product.images}
+          alt={product.title}
+          className="aspect-[3/4] w-full"
+          overrideSrc={selectedColor === 0 ? null : colorImage}
+        />
 
-          {/* Color swatches as image thumbnails */}
-          <div className="flex gap-3">
-            {product.colors.map((color, i) => (
-              <button
-                key={color.hex}
-                onClick={() => setSelectedColor(i)}
-                className={`w-10 h-10 rounded-xl border-2 transition-all duration-300 overflow-hidden ${
-                  selectedColor === i
-                    ? "border-foreground scale-105 ring-1 ring-offset-1 ring-offset-background shadow-lg"
-                    : "border-border hover:border-foreground/40"
-                }`}
-                aria-label={color.name}
-              >
-                <Image
-                  src={product.colorImages[color.hex] || product.thumbnail}
-                  alt={color.name}
-                  fill
-                  className="object-cover object-center"
-                />
-              </button>
-            ))}
-          </div>
+        <div className="flex gap-3">
+          {product.colors.map((color, i) => (
+            <button
+              key={color.hex}
+              onClick={() => setSelectedColor(i)}
+              className={`w-10 h-10 rounded-xl border-2 transition-all duration-300 overflow-hidden ${
+                selectedColor === i
+                  ? "border-foreground scale-105 ring-1 ring-offset-1 ring-offset-background shadow-lg"
+                  : "border-border hover:border-foreground/40"
+              }`}
+              aria-label={color.name}
+            >
+              <Image
+                src={product.colorImages[color.hex] || product.thumbnail}
+                alt={color.name}
+                fill
+                className="object-cover object-center"
+              />
+            </button>
+          ))}
         </div>
+      </div>
+
+      {/* Right: Product Details & Controls */}
+      <div className="flex flex-col gap-6">
+        <span className="text-[9px] font-bold tracking-[0.35em] text-muted-foreground uppercase block">
+          Color — {product.colors[selectedColor].name}
+        </span>
 
         <div className="flex flex-col gap-3">
           <span className="text-[9px] font-bold tracking-[0.35em] text-muted-foreground uppercase block">
-            Color — {product.colors[selectedColor].name}
+            Size
           </span>
-
-          <div className="flex flex-col gap-3">
-            <span className="text-[9px] font-bold tracking-[0.35em] text-muted-foreground uppercase block">
-              Size
-            </span>
-            <div className="flex gap-3">
-              {product.sizes.map((size) => (
-                <button
-                  key={size}
-                  onClick={() => {
-                    setSelectedSize(size)
-                    setError(false)
-                  }}
-                  disabled={!inStock}
-                  className={`min-w-[48px] h-12 px-5 text-[11px] font-bold tracking-[0.2em] uppercase border transition-all duration-300 ${
-                    selectedSize === size
-                      ? "bg-foreground text-background border-foreground"
-                      : error && !selectedSize
-                      ? "border-destructive text-destructive"
-                      : "bg-transparent text-foreground border-border hover:border-foreground"
-                  } ${!inStock ? "opacity-50 cursor-not-allowed" : ""}`}
-                >
-                  {size}
-                </button>
-              ))}
-            </div>
-            {!inStock && (
-              <p className="text-[10px] text-destructive font-light">
-                Currently out of stock
-              </p>
-            )}
-            {error && !inStock === false && (
-              <p className="text-[10px] text-destructive font-light">
-                Please select a size before adding to bag
-              </p>
-            )}
+          <div className="flex gap-3">
+            {product.sizes.map((size) => (
+              <button
+                key={size}
+                onClick={() => {
+                  setSelectedSize(size)
+                  setError(false)
+                }}
+                disabled={!inStock}
+                className={`min-w-[48px] h-12 px-5 text-[11px] font-bold tracking-[0.2em] uppercase border transition-all duration-300 ${
+                  selectedSize === size
+                    ? "bg-foreground text-background border-foreground"
+                    : error && !selectedSize
+                    ? "border-destructive text-destructive"
+                    : "bg-transparent text-foreground border-border hover:border-foreground"
+                } ${!inStock ? "opacity-50 cursor-not-allowed" : ""}`}
+              >
+                {size}
+              </button>
+            ))}
           </div>
+          {!inStock && (
+            <p className="text-[10px] text-destructive font-light">
+              Currently out of stock
+            </p>
+          )}
+          {error && !inStock === false && (
+            <p className="text-[10px] text-destructive font-light">
+              Please select a size before adding to bag
+            </p>
+          )}
+        </div>
 
-          <div className="flex flex-col gap-3 mt-4">
-            <span className="text-[9px] font-bold tracking-[0.35em] text-muted-foreground uppercase block">
-              Quantity
-            </span>
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => handleQtyChange(-1)}
-                disabled={quantity <= 1 || !inStock}
-                className="w-10 h-10 flex items-center justify-center border border-border/60 rounded-full text-muted-foreground hover:text-foreground transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <span className="text-[10px]">−</span>
-              </button>
-              <span className="w-8 text-center text-sm font-bold">{quantity}</span>
-              <button
-                onClick={() => handleQtyChange(1)}
-                disabled={quantity >= 10 || !inStock}
-                className="w-10 h-10 flex items-center justify-center border border-border/60 rounded-full text-muted-foreground hover:text-foreground transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <span className="text-[10px]">+</span>
-              </button>
-            </div>
+        <div className="flex flex-col gap-3 mt-4">
+          <span className="text-[9px] font-bold tracking-[0.35em] text-muted-foreground uppercase block">
+            Quantity
+          </span>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => handleQtyChange(-1)}
+              disabled={quantity <= 1 || !inStock}
+              className="w-10 h-10 flex items-center justify-center border border-border/60 rounded-full text-muted-foreground hover:text-foreground transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <span className="text-[10px]">−</span>
+            </button>
+            <span className="w-8 text-center text-sm font-bold">{quantity}</span>
+            <button
+              onClick={() => handleQtyChange(1)}
+              disabled={quantity >= 10 || !inStock}
+              className="w-10 h-10 flex items-center justify-center border border-border/60 rounded-full text-muted-foreground hover:text-foreground transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <span className="text-[10px]">+</span>
+            </button>
           </div>
         </div>
       </div>
 
-      <div className="flex gap-4 pt-2">
+      <div className="flex gap-4 pt-2 md:pt-0">
         <button
           onClick={handleAddToBag}
           disabled={!selectedSize || !inStock}

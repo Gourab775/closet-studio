@@ -1,9 +1,9 @@
 "use client"
 
 import React, { useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { PRODUCTS } from "@/lib/products"
+import { ImageCarousel } from "@/components/ui/image-carousel"
 
 const COLLECTIONS = ["All", "Studio Collection", "Tailored Studio", "Essentials"]
 
@@ -54,23 +54,13 @@ export default function StorePage() {
               className="group block"
               style={{ animationDelay: `${i * 60}ms` }}
             >
-              <div className="relative aspect-[3/4] w-full overflow-hidden bg-muted mb-5">
-                <Image
-                  src={product.thumbnail}
-                  alt={product.title}
-                  fill
-                  className="object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1200"
-                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                />
-                <div className="absolute top-0 left-0 w-5 h-[1px] bg-foreground/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute top-0 left-0 w-[1px] h-5 bg-foreground/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute top-0 right-0 w-5 h-[1px] bg-foreground/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute top-0 right-0 w-[1px] h-5 bg-foreground/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute bottom-0 left-0 w-5 h-[1px] bg-foreground/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute bottom-0 left-0 w-[1px] h-5 bg-foreground/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute bottom-0 right-0 w-5 h-[1px] bg-foreground/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute bottom-0 right-0 w-[1px] h-5 bg-foreground/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              </div>
+              <ImageCarousel
+                images={product.images}
+                alt={product.title}
+                autoScroll={true}
+                interval={4000}
+                className="aspect-[3/4] w-full mb-5"
+              />
 
               <div className="text-center">
                 <span className="text-[8px] text-muted-foreground uppercase tracking-[0.5em] block mb-3 font-light">
