@@ -45,11 +45,11 @@ export function ProductDetailClient({ product }: { product: Product }) {
   return (
     <div className="flex flex-col gap-8 md:flex-row md:gap-12">
       {/* Left: Image Carousel */}
-      <div className="flex-1 flex flex-col gap-4">
+      <div className="flex-1 flex flex-col gap-4 min-w-0">
         <ImageCarousel
           images={product.images}
           alt={product.title}
-          className="aspect-[3/4] w-full"
+          className="aspect-[3/4] w-full max-h-[600px]"
           overrideSrc={selectedColor === 0 ? null : colorImage}
         />
 

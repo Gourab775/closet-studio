@@ -58,7 +58,7 @@ export default function StorePage() {
                 images={product.images}
                 alt={product.title}
                 autoScroll={true}
-                interval={4000}
+                interval={3500 + (i * 700 % 2500)}
                 className="aspect-[3/4] w-full mb-5"
               />
 
