@@ -140,7 +140,7 @@ export default function AboutPage() {
           </p>
           <div className="relative w-full aspect-video max-w-4xl mx-auto overflow-hidden rounded-3xl">
             <Image
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=1400&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1400&auto=format&fit=crop"
               alt="CLOSET Studio Interior"
               fill
               className="object-cover grayscale"

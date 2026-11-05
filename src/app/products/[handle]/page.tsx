@@ -49,30 +49,6 @@ export default async function ProductPage({ params }: Props) {
         </div>
 
         <ProductDetailClient product={product} />
-
-        <div className="mt-16 pt-10 border-t border-border/40">
-          <span className="text-[9px] font-bold tracking-[0.4em] text-muted-foreground uppercase block mb-5">
-            Material & Care
-          </span>
-          <p className="text-sm text-foreground font-light">{product.material}</p>
-          <p className="text-sm text-muted-foreground font-light mt-4">
-            {product.care.join(" • ")}
-          </p>
-        </div>
-
-        <div className="mt-10 pt-10 border-t border-border/40">
-          <span className="text-[9px] font-bold tracking-[0.4em] text-muted-foreground uppercase block mb-5">
-            Details
-          </span>
-          <ul className="flex flex-col gap-3">
-            {product.features.map((f) => (
-              <li key={f} className="text-sm text-foreground font-light flex items-center gap-3">
-                <span className="w-1.5 h-1.5 bg-foreground rounded-full shrink-0" />
-                {f}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
 
       {related.length > 0 && (

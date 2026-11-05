@@ -58,7 +58,9 @@ export default function StorePage() {
                 images={product.images}
                 alt={product.title}
                 autoScroll={true}
-                interval={3500 + (i * 700 % 2500)}
+                randomize={true}
+                initialDelay={((i * 1337 + 7919) % 2600) + 700}
+                interval={3800 + ((i * 997 + 2333) % 2400)}
                 className="aspect-[3/4] w-full mb-5"
               />
 
